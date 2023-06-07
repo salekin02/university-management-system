@@ -1,7 +1,7 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import usersService from './users.service'
 
-const createUser = async (req: Request, res: Response) => {
+const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { user } = req.body
     const result = await usersService.createUser(user)
@@ -11,11 +11,8 @@ const createUser = async (req: Request, res: Response) => {
       message: 'User created successfully',
     })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    res.status(500).json({
-      succuss: false,
-      message: error?.message,
-    })
+  } catch (error) {
+    next(error)
   }
 }
 
