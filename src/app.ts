@@ -1,5 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from 'express'
-import userRouter from './modules/users/users.route'
+import { UserRoutes } from './modules/users/users.route'
 const app: Application = express()
 import cors from 'cors'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //application routes
 
-app.use('/api/v1/users', userRouter)
+app.use('/api/v1/users', UserRoutes)
 
 //test route
 app.get('/', async (req: Request, res: Response, next: NextFunction) => {

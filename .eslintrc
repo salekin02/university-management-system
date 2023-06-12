@@ -19,9 +19,17 @@
       "error",
       "type"
     ],
+    "prefer-const": "error",
+    "no-undef": "error",
+    "no-unused-expressions": "error",
+    "no-console": "error"
   },
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
+  },
+  "globals": {
+    "process": "readonly"
   }
 }
