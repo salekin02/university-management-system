@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import { UserService } from './users.service'
+import { UserService } from './user.service'
 
 const createUser: RequestHandler = async (req, res, next) => {
   try {
@@ -10,7 +10,6 @@ const createUser: RequestHandler = async (req, res, next) => {
       data: result,
       message: 'User created successfully',
     })
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error) {
     next(error)
   }

@@ -22,7 +22,7 @@
     "prefer-const": "error",
     "no-undef": "error",
     "no-unused-expressions": "error",
-    "no-console": "error"
+    "no-console": "off"
   },
   "env": {
     "browser": true,

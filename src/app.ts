@@ -1,5 +1,5 @@
-import express, { Application, NextFunction, Request, Response } from 'express'
-import { UserRoutes } from './modules/users/users.route'
+import express, { Application } from 'express'
+import { UserRoutes } from './modules/user/user.route'
 const app: Application = express()
 import cors from 'cors'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
@@ -15,9 +15,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/v1/users', UserRoutes)
 
 //test route
-app.get('/', async (req: Request, res: Response, next: NextFunction) => {
-  next('new error')
-})
+// app.get('/', async (req: Request, res: Response, next: NextFunction) => {
+//   throw new Error('testing error')
+// })
 
 //global error handler
 app.use(globalErrorHandler)
