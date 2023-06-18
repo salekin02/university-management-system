@@ -56,6 +56,4 @@ const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
   semesterSchema
 )
 
-
-
 export default AcademicSemester
