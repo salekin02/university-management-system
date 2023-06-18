@@ -23,4 +23,12 @@ app.use('/api/v1/', routes)
 //global error handler
 app.use(globalErrorHandler)
 
+app.use((req, res, next) => {
+  res.status(404).json({
+    success: false,
+    message: 'API not found',
+  })
+  next()
+})
+
 export default app
