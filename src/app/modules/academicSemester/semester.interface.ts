@@ -20,7 +20,7 @@ export type ISemesterCode = '01' | '02' | '03'
 
 type IAcademicSemester = {
   title: ISemesterTitle
-  year: number
+  year: string
   code: ISemesterCode
   startMonth: ISemesterMonth
   endMonth: ISemesterMonth
@@ -29,3 +29,7 @@ type IAcademicSemester = {
 type AcademicSemesterModel = Model<IAcademicSemester>
 
 export { IAcademicSemester, AcademicSemesterModel }
+
+export type IAcademicSemesterFilters = {
+  searchTerm?: string
+}

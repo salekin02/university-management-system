@@ -10,7 +10,7 @@ const createSemesterZodSchema = z.object({
     title: z.enum([...semesterTitles] as [string, ...string[]], {
       required_error: 'Title is required',
     }),
-    year: z.number({
+    year: z.string({
       required_error: 'Year is required',
     }),
     code: z.enum([...semesterCodes] as [string, ...string[]], {
@@ -24,6 +24,46 @@ const createSemesterZodSchema = z.object({
     }),
   }),
 })
+const updateSemesterZodSchema = z
+  .object({
+    body: z.object({
+      title: z
+        .enum([...semesterTitles] as [string, ...string[]], {
+          required_error: 'Title is required',
+        })
+        .optional(),
+      year: z
+        .string({
+          required_error: 'Year is required',
+        })
+        .optional(),
+      code: z
+        .enum([...semesterCodes] as [string, ...string[]], {
+          required_error: 'Code is required',
+        })
+        .optional(),
+      startMonth: z
+        .enum([...semesterMonths] as [string, ...string[]], {
+          required_error: 'Start Month is required',
+        })
+        .optional(),
+      endMonth: z
+        .enum([...semesterMonths] as [string, ...string[]], {
+          required_error: 'End Month is required',
+        })
+        .optional(),
+    }),
+  })
+  .refine(
+    data =>
+      (data.body.title && data.body.code) ||
+      (!data.body.title && !data.body.code),
+    {
+      message: 'Either both title and code are required or none of them',
+    }
+  )
+
 export const SemesterValidation = {
   createSemesterZodSchema,
+  updateSemesterZodSchema,
 }
