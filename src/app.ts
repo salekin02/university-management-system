@@ -3,6 +3,7 @@ const app: Application = express()
 import cors from 'cors'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
 import routes from './app/routes'
+import { generateStudentId } from './app/modules/user/user.utils'
 
 app.use(cors())
 
@@ -12,13 +13,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //application routes
 
-// app.use('/api/v1/users', UserRoutes)
-// app.use('/api/v1/semesters', SemesterRoutes)
 app.use('/api/v1/', routes)
-//test route
-// app.get('/', async (req: Request, res: Response, next: NextFunction) => {
-//   throw new Error('testing error')
-// })
 
 //global error handler
 app.use(globalErrorHandler)
@@ -29,6 +24,16 @@ app.use((req, res, next) => {
     message: 'API not found',
   })
   next()
-})
+});
+
+(async () => {
+  const academicSemester = {
+    code: '01',
+    year: '2021',
+  }
+
+  const testId = await generateStudentId(academicSemester)
+  console.log(testId)
+})()
 
 export default app
