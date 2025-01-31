@@ -11,7 +11,7 @@ export const findLastStudentId = async () => {
   return lastStudent?.id
 }
 
-export const generateStudentId = async (academicSemester: IAcademicSemester) => {
+export const generateStudentId = async (academicSemester: IAcademicSemester | null) => {
   const currentId = (await findLastStudentId()) || (0).toString().padStart(5, '0')
 
   //increment by 1

@@ -7,5 +7,5 @@ export default {
   env: process.env.NODE_ENV || 'production',
   port: process.env.PORT || 3000,
   database_url: process.env.DATABASE_URL || 'mongodb://localhost:27017/test',
-  default_user_pass: process.env.DEFAULT_USER_PASS || '1234',
+  default_student_pass: process.env.DEFAULT_STUDENT_PASS || '1234',
 }

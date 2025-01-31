@@ -9,11 +9,11 @@ export const StudentSchema = new Schema<IStudent, StudentModel>({
     },
     name: {
         type: {
-            firstname: {
+            firstName: {
                 type: String,
                 required: true
             },
-            lastname: {
+            lastName: {
                 type: String,
                 required: true
             }
